@@ -842,7 +842,7 @@ linkArtist(gotoNext){
 	;
 	global vlohome
 
-	url = GetActiveBrowserURL()
+	url := GetActiveBrowserURL()
 	;msgbox, >%url%<
 	newStr := GetActiveWindowSong()
 	whr := ComObjCreate("WinHttp.WinHttpRequest.5.1")
