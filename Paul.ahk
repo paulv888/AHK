@@ -878,12 +878,10 @@ linkArtist(gotoNext){
 GetActiveWindowTicker()
 {
 
-	if WinExist("StreetSmart Edge")
+	if WinActive("StreetSmart Edge")
 	{
-		WinActivate
-		Click, 550, 100
+		Click, 550 100
 		Send, {CTRLDOWN}ac{CTRLUP}
-		sleep 1
 		newStr := clipboard
 	} 
 	if WinActive("ahk_exe ActiveTraderPro.exe")
