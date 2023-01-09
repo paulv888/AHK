@@ -306,6 +306,41 @@ return
 	}
 }
 
+#IfWinActive , 123Warhammer
+{
++g:: ; drop granade
+	SendInput g
+    Sleep 1000
+	Send {LButton}
+	return
+
+
++d:: ; have shift down parry push slay
+	Send {d down}{space}{d up}
+    Sleep 500
+	Send {LButton Down}
+    Sleep 500
+	Send {LButton Up}
+	return
+
++a:: ; have shift down parry push slay
+	Send {a down}{space}{a up}
+    Sleep 500
+	Send {LButton Down}
+    Sleep 500
+	Send {LButton Up}
+	return
+
++s:: ; have shift down parry push slay
+	Send {s down}{space}{s up}
+    Sleep 500
+    Send {LButton Down}
+    Sleep 500
+	Send {LButton Up}
+	return
+}
+
+
 findDB()
 {
 	global vlosearch
