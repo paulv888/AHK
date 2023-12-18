@@ -417,10 +417,10 @@ GetActiveWindowSong()
 	}
 	StringReplace, newStr, newStr,%A_Space%-%A_Space%Google%A_Space%Chrome,,All
 	StringReplace, newStr, newStr,%A_Space%-%A_Space%YouTube,,All
-	ifInString newStr,Spotify
-	{
-		newStr:=SubStr(newStr, 10)
-	}
+;	ifInString newStr,Spotify
+;	{
+;		newStr:=SubStr(newStr, 10)
+;	}
 	return newStr
 }
 
@@ -612,34 +612,37 @@ GetArtist(MyTitle)
 		StringGetPos MyEnd, MyTitle, %A_Space%-%A_Space%, L1
 	else
 	    dot:=Chr(183)
-		IfInString MyTitle,%A_Space%%dot%%A_Space% 								; " ·" Spotify Reverse
-		{
-			StringGetPos MyStart, MyTitle,%A_Space%%dot%%A_Space%, L1
-			MyStart+=3
-			MyEnd:=0
-		} 
-		else
+;		IfInString MyTitle,%A_Space%%dot%%A_Space% 								; " ·" Spotify Reverse
+;		{
+;			StringGetPos MyStart, MyTitle,%A_Space%%dot%%A_Space%, L1
+;			MyStart+=3
+;			MyEnd:=0
+;		} 
+;		else
 		IfInString MyTitle,%A_Space%-								; "- "
 			StringGetPos MyEnd, MyTitle, %A_Space%-, L1
 		 else
 			IfInString MyTitle,-									; "-"
 			   StringGetPos MyEnd, MyTitle, -, L1
 			else
-				IfInString MyTitle,%A_Space%(						; " ("
-				{
-					StringGetPos MyStart, MyTitle,%A_Space%(, L1
-					MyStart:=MyStart+3
-					StringGetPos MyEnd, MyTitle,), L1
-					if (MyEnd = -1)
-						MyEnd := StrLen(MyTitle)
-					else
-						MyEnd := MyEnd - MyStart + 1
-				}
+				IfInString MyTitle,|									; "|"
+					StringGetPos MyEnd, MyTitle, |, L1
 				else
-					ifInString MyTitle,:%A_Space%					; ": "
-						StringGetPos MyEnd, MyTitle, :%A_Space%, L1
+					IfInString MyTitle,%A_Space%(						; " ("
+					{
+						StringGetPos MyStart, MyTitle,%A_Space%(, L1
+						MyStart:=MyStart+3
+						StringGetPos MyEnd, MyTitle,), L1
+						if (MyEnd = -1)
+							MyEnd := StrLen(MyTitle)
+						else
+							MyEnd := MyEnd - MyStart + 1
+					}
 					else
-						StringGetPos MyEnd, MyTitle,%A_Space%, L1   ; " " 
+						ifInString MyTitle,:%A_Space%					; ": "
+							StringGetPos MyEnd, MyTitle, :%A_Space%, L1
+						else
+							StringGetPos MyEnd, MyTitle,%A_Space%, L1   ; " " 
 
    if (MyEnd = 0)
       MyEnd := StrLen(MyTitle)
@@ -865,6 +868,9 @@ linkArtist(gotoNext){
 	url := GetActiveBrowserURL()
 	;msgbox, >%url%<
 	newStr := GetActiveWindowSong()
+	msgbox, >%newStr%<
+	newStr := GetArtist(newStr)
+	msgbox, >%newStr%<
 	whr := ComObjCreate("WinHttp.WinHttpRequest.5.1")
 	whr.Open("POST", vlohome, true)
 	whr.SetRequestHeader("User-Agent", "User-Agent")
