@@ -147,9 +147,9 @@ return
 ;
 	newStr := GetActiveWindowTicker()
 ;	MySearch:=UriEncode(newStr)
-;	Run, firefox.exe %schwab%%newStr%/
-	Run, firefox.exe %yahoo%%newStr%/
-	Run, firefox.exe %twits%%newStr%/
+;	Run, chrome.exe %schwab%%newStr%/
+	Run, chrome.exe %yahoo%%newStr%/
+	Run, chrome.exe %twits%%newStr%/
 ;	MyTitle:= GetActiveWindowSong()
 ;	MySearch:= GetArtist(MyTitle)
 ;	;MySearch:= CleanName(MyTitle)
@@ -335,7 +335,7 @@ findDB()
 
 	ifWinNotExist,Music Videos - Vlo Home
 	{
-		Run, firefox.exe %vlosearch%%rawStr%
+		Run,  chrome.exe %vlosearch%%rawStr%
 		return
 	}
 	else   
