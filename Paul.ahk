@@ -13,7 +13,7 @@ AutoClick = 0
 global AutoClick
  AutoClick := !AutoClick
  if AutoClick {
-     SetTimer, AutoClick, On
+     SetTimer, AutoClick, 100
  } else {
 	SetTimer, AutoClick, Off
  } 
@@ -39,17 +39,16 @@ return
 return
 
 
-
 ^!t::
 	IfWinExist ahk_exe eu4.exe
 	{
 		WinActivate
 		loop
 		{
-			If Stop ; test to see if we must brek the loop
+			If Stop ; test to see if we must break the loop
 			{
-				Stop := !Stop ; reinit the brek key
-				Break ; brek the loop
+				Stop := !Stop ; reinit the break key
+				Break ; break the loop
 			} Else {
 				Click, 340, 234
 				sleep 800			; 1000 ms = 1 sec, change to sleep 60000 for 1 minute delay
