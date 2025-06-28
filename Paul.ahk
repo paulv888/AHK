@@ -201,23 +201,23 @@ return
 {
 
 
-	^RButton Up:: ; Open in new tab and switch to, queue and close tab
+;	^RButton Up:: ; Open in new tab and switch to, queue and close tab
 		;
-		Send {RButton Up}       ; Cursor down enter
-		Sleep, 400
-		Send {Down}{Enter}       ; Cursor down enter
-		Sleep, 500
-		Send ^{Tab}       ; Next Tab
-		Sleep, 800
-		QueueVideo(false)
-		Send ^w       ; Close Tab
-		return
+;		Send {RButton Up}       ; Cursor down enter
+;		Sleep, 400
+;		Send {Down}{Enter}       ; Cursor down enter
+;		Sleep, 500
+;		Send ^{Tab}       ; Next Tab
+;		Sleep, 800
+;		QueueVideo(false)
+;		Send ^w       ; Close Tab
+;		return
 
 
-	^LButton:: ; Download
-	!d:: ; Download
-		QueueVideo(true)
-		return
+;	^LButton:: ; Download
+;	!d:: ; Download
+;		QueueVideo(true)
+;		return
 		
 	!w::
 	;
