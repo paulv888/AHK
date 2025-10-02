@@ -215,11 +215,11 @@ return
 
 
 ;	^LButton:: ; Download
-;	!d:: ; Download
-;		QueueVideo(true)
-;		return
+!d:: ; Download
+		QueueVideo(true)
+		return
 		
-	!w::
+!w::
 	;
 	; next on playlist
 	;
@@ -227,7 +227,7 @@ return
 		SendInput, +n
 		return
 		
-	!p:: ; Download Playlist
+!p:: ; Download Playlist
 		;
 		; Read URL and post to vlohome
 		;
