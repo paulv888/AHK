@@ -102,16 +102,16 @@ Return
 return
 
 ^!i::
-	IfWinExist ahk_class IrfanView
-	{
-		WinActivate
-	}
-	else
-	{
+;	IfWinExist ahk_class IrfanView
+;	{
+;		WinActivate
+;	}
+;	else
+;	{
 		Run C:\Program Files\IrfanView\i_view64
 		WinWait ahk_class IrfanView,,3
 		WinActivate
-	}
+;	}
 return
 
 ^!q::
@@ -190,6 +190,15 @@ return
 	Msgbox Done
 return
 
+~`::
+ifWinActive, Tropico6
+{
+	Send 3
+	Sleep, 100
+	Send {Tab 4}       ; Next Tab
+}
+return
+	
 #IfWinActive , Spotify
 {
 !s:: ; Select artist
@@ -251,7 +260,7 @@ return
 		response:=whr.ResponseText
 		Needle:="OK"
 		found:=InStr(response, Needle)
-		;msgbox, %status%-%response%-%found%-%Needle%
+		;RRZZ %status%-%response%-%found%-%Needle%
 		If (InStr(response, Needle)) && (status=200)
 		{
 			TrayTip addToQueue, %status% - %response%, ,0
